@@ -1,18 +1,18 @@
 //
-//  FX_WBTests.m
-//  FX_WBTests
+//  Fx_WeiBoTests.m
+//  Fx_WeiBoTests
 //
-//  Created by Apple_Lzzy09 on 2017/9/11.
+//  Created by Apple_Lzzy09 on 2017/9/12.
 //  Copyright © 2017年 FX. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface FX_WBTests : XCTestCase
+@interface Fx_WeiBoTests : XCTestCase
 
 @end
 
-@implementation FX_WBTests
+@implementation Fx_WeiBoTests
 
 - (void)setUp {
     [super setUp];

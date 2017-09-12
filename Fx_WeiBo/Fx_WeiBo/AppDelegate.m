@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  FX_WB
+//  Fx_WeiBo
 //
-//  Created by Apple_Lzzy09 on 2017/9/11.
+//  Created by Apple_Lzzy09 on 2017/9/12.
 //  Copyright © 2017年 FX. All rights reserved.
 //
 
@@ -20,7 +20,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     //    步骤：
     //    1.初始化控制器
     //    2.给窗口设置根控制器
@@ -29,7 +28,9 @@
     //    初始化控制器
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-
+    //实例化taber控制器
+    self.taBer=[[FXTaBarController alloc] init];
+    
     //实例化各个视图控制器
     FXHomeViewController *homeviewC=[[FXHomeViewController alloc] init];
     
@@ -48,19 +49,12 @@
     
     [self addChildWithVC:discoverViewC Title:@"发现" image:@"tabbar_discover" seletedImage:@"tabbar_discover_selected" ];
     
-    
+
+
+
     
     //创建TabBarController，它是程序底部的标签页,是一个容器
-    FXTaBarController *taberC=[[FXTaBarController alloc] init];
-    
-    //添加ViewController到 taberC 容器
-    [taberC addChildViewController:homeviewC];
-    [taberC addChildViewController:messageViewC];
-    [taberC addChildViewController:profileviewC];
-    [taberC addChildViewController:discoverViewC];
-    
-    //再把 taberC 容器 赋值给 window的根控制器
-    self.window.rootViewController=taberC;
+    self.window.rootViewController=self.taBer;
     //显示
     [self.window makeKeyAndVisible];
     return YES;
@@ -68,13 +62,14 @@
 
 /**
  <#Description#>
-
+ 
  @param VC UIViewController
  @param title 标题
  @param image 图片名称
  */
 -(void)addChildWithVC:(UIViewController *)VC Title:(NSString *)title image:(NSString*)image seletedImage:(NSString *)seletedImag
 {
+
     //指定背景颜色
     VC.view.backgroundColor=[UIColor yellowColor];
     //设置Item标题
@@ -91,14 +86,19 @@
     //设置文本颜色
     [VC.tabBarItem setTitleTextAttributes:titleAttri forState:UIControlStateSelected];
     
- 
+    
     //渲染选中图片
     VC.tabBarItem.selectedImage=[[UIImage imageNamed:seletedImag] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-   
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:VC];
+    
+    
+    [self.taBer addChildViewController:nav];
+    
     
     
 }
+
 
 
 
