@@ -20,6 +20,7 @@
 		51AE33151F677B1F00D7CCA1 /* FXMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE330E1F677B1F00D7CCA1 /* FXMessageViewController.m */; };
 		51AE33161F677B1F00D7CCA1 /* FXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33101F677B1F00D7CCA1 /* FXProfileViewController.m */; };
 		51AE33171F677B1F00D7CCA1 /* FXTaBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */; };
+		51AE331A1F6787CC00D7CCA1 /* FXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		51AE33101F677B1F00D7CCA1 /* FXProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXProfileViewController.m; sourceTree = "<group>"; };
 		51AE33111F677B1F00D7CCA1 /* FXTaBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTaBarController.h; sourceTree = "<group>"; };
 		51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTaBarController.m; sourceTree = "<group>"; };
+		51AE33181F6787CC00D7CCA1 /* FXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXNavigationController.h; sourceTree = "<group>"; };
+		51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 				51AE33101F677B1F00D7CCA1 /* FXProfileViewController.m */,
 				51AE33111F677B1F00D7CCA1 /* FXTaBarController.h */,
 				51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */,
+				51AE33181F6787CC00D7CCA1 /* FXNavigationController.h */,
+				51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 		51AE32CA1F677A7F00D7CCA1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FX;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = FX;
 				TargetAttributes = {
@@ -309,6 +315,7 @@
 				51AE32DD1F677A7F00D7CCA1 /* ViewController.m in Sources */,
 				51AE33131F677B1F00D7CCA1 /* FXDiscoverViewController.m in Sources */,
 				51AE33171F677B1F00D7CCA1 /* FXTaBarController.m in Sources */,
+				51AE331A1F6787CC00D7CCA1 /* FXNavigationController.m in Sources */,
 				51AE33151F677B1F00D7CCA1 /* FXMessageViewController.m in Sources */,
 				51AE33141F677B1F00D7CCA1 /* FXHomeViewController.m in Sources */,
 				51AE32DA1F677A7F00D7CCA1 /* AppDelegate.m in Sources */,
@@ -463,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Fx_WeiBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-66666.Fx-WeiBo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -474,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Fx_WeiBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-66666.Fx-WeiBo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

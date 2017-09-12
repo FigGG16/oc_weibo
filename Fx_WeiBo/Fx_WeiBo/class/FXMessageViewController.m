@@ -24,14 +24,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//返回行数
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
 }
-*/
-
+//设置cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /**第一步设置cell的标识ID*/
+    static NSString *ID=@"cell";
+    /**去缓存池中查找有没有可利用的cell*/
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    /**没有的话则新建一个，并制定样式*/
+    if(cell==nil)
+    {   //实例化cell
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    //获取行数
+    NSString *str=[NSString stringWithFormat:@"text%ld",indexPath.row];
+    //赋值给单元格
+    cell.textLabel.text=str;
+    return cell;
+}
 @end

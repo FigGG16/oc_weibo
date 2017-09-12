@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FXDiscoverViewController : UIViewController
+@interface FXDiscoverViewController : UITableViewController
 
 @end

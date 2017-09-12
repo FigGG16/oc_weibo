@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FXMessageViewController : UIViewController
+@interface FXMessageViewController : UITableViewController
 
 @end

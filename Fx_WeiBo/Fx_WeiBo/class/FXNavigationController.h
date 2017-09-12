@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  FXNavigationController.h
 //  Fx_WeiBo
 //
 //  Created by Apple_Lzzy09 on 2017/9/12.
@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-
+@interface FXNavigationController : UINavigationController
 
 @end
-

@@ -7,6 +7,13 @@
 //
 
 #import "FXTaBarController.h"
+#import "FXTaBarController.h"
+#import "FXHomeViewController.h"
+#import "FXMessageViewController.h"
+#import "FXProfileViewController.h"
+#import "FXDiscoverViewController.h"
+
+#import "FXNavigationController.h"
 
 @interface FXTaBarController ()
 
@@ -16,9 +23,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    
+    //实例化各个视图控制器
+    FXHomeViewController *homeviewC=[[FXHomeViewController alloc] init];
+    
+    FXMessageViewController *messageViewC=[[FXMessageViewController alloc]init];
+    FXProfileViewController *profileviewC=[[FXProfileViewController alloc]init];
+    FXDiscoverViewController *discoverViewC=[[FXDiscoverViewController alloc] init];
+    
+    //设置控制器参数
+    [self addChildWithVC:homeviewC Title:@"首页" image:@"tabbar_home" seletedImage:@"tabbar_home_selected"];
+    
+    [self addChildWithVC:messageViewC Title:@"消息" image:@"tabbar_message_center" seletedImage:@"tabbar_message_center_selected"];
+    
+    [self addChildWithVC:profileviewC Title:@"我" image:@"tabbar_profile" seletedImage:@"tabbar_profile_selected"];
+    
+    [self addChildWithVC:discoverViewC Title:@"发现" image:@"tabbar_discover" seletedImage:@"tabbar_discover_selected" ];
 
+}
+-(void)addChildWithVC:(UIViewController *)VC Title:(NSString *)title image:(NSString*)image seletedImage:(NSString *)seletedImag
+{
+    FXNavigationController *nav=[[FXNavigationController alloc]initWithRootViewController:VC];
+    //指定背景颜色
+    VC.view.backgroundColor=[UIColor yellowColor];
+    
+    //设置navigationItem标题
+    VC.navigationItem.title=title;
+    //设置Item标题
+    VC.tabBarItem.title=title;
+    //设置Item图片
+    VC.tabBarItem.image=[UIImage imageNamed:image];
+    //创建一个字典
+    NSMutableDictionary *titleAttri = [NSMutableDictionary dictionary];
+    //KVO修改颜色
+    titleAttri[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    //设置文本颜色
+    [VC.tabBarItem setTitleTextAttributes:titleAttri forState:UIControlStateSelected];
+    //渲染选中图片
+    VC.tabBarItem.selectedImage=[[UIImage imageNamed:seletedImag] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    [self addChildViewController:nav];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

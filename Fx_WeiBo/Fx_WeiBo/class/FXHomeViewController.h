@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FXHomeViewController : UIViewController
+@interface FXHomeViewController : UITableViewController
 
 @end
