@@ -21,6 +21,8 @@
 		51AE33161F677B1F00D7CCA1 /* FXProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33101F677B1F00D7CCA1 /* FXProfileViewController.m */; };
 		51AE33171F677B1F00D7CCA1 /* FXTaBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */; };
 		51AE331A1F6787CC00D7CCA1 /* FXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */; };
+		51C7BEF01F6FA8940033C5E7 /* FXTest1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C7BEEF1F6FA8940033C5E7 /* FXTest1ViewController.m */; };
+		51C7BEF31F6FAD310033C5E7 /* FXTest2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C7BEF21F6FAD310033C5E7 /* FXTest2ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTaBarController.m; sourceTree = "<group>"; };
 		51AE33181F6787CC00D7CCA1 /* FXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXNavigationController.h; sourceTree = "<group>"; };
 		51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXNavigationController.m; sourceTree = "<group>"; };
+		51C7BEEE1F6FA8940033C5E7 /* FXTest1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTest1ViewController.h; sourceTree = "<group>"; };
+		51C7BEEF1F6FA8940033C5E7 /* FXTest1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTest1ViewController.m; sourceTree = "<group>"; };
+		51C7BEF11F6FAD310033C5E7 /* FXTest2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTest2ViewController.h; sourceTree = "<group>"; };
+		51C7BEF21F6FAD310033C5E7 /* FXTest2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTest2ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,10 @@
 				51AE33121F677B1F00D7CCA1 /* FXTaBarController.m */,
 				51AE33181F6787CC00D7CCA1 /* FXNavigationController.h */,
 				51AE33191F6787CC00D7CCA1 /* FXNavigationController.m */,
+				51C7BEEE1F6FA8940033C5E7 /* FXTest1ViewController.h */,
+				51C7BEEF1F6FA8940033C5E7 /* FXTest1ViewController.m */,
+				51C7BEF11F6FAD310033C5E7 /* FXTest2ViewController.h */,
+				51C7BEF21F6FAD310033C5E7 /* FXTest2ViewController.m */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -314,9 +324,11 @@
 			files = (
 				51AE32DD1F677A7F00D7CCA1 /* ViewController.m in Sources */,
 				51AE33131F677B1F00D7CCA1 /* FXDiscoverViewController.m in Sources */,
+				51C7BEF01F6FA8940033C5E7 /* FXTest1ViewController.m in Sources */,
 				51AE33171F677B1F00D7CCA1 /* FXTaBarController.m in Sources */,
 				51AE331A1F6787CC00D7CCA1 /* FXNavigationController.m in Sources */,
 				51AE33151F677B1F00D7CCA1 /* FXMessageViewController.m in Sources */,
+				51C7BEF31F6FAD310033C5E7 /* FXTest2ViewController.m in Sources */,
 				51AE33141F677B1F00D7CCA1 /* FXHomeViewController.m in Sources */,
 				51AE32DA1F677A7F00D7CCA1 /* AppDelegate.m in Sources */,
 				51AE33161F677B1F00D7CCA1 /* FXProfileViewController.m in Sources */,
@@ -554,6 +566,7 @@
 				51AE33011F677A7F00D7CCA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51AE33021F677A7F00D7CCA1 /* Build configuration list for PBXNativeTarget "Fx_WeiBoTests" */ = {
 			isa = XCConfigurationList;
@@ -562,6 +575,7 @@
 				51AE33041F677A7F00D7CCA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51AE33051F677A7F00D7CCA1 /* Build configuration list for PBXNativeTarget "Fx_WeiBoUITests" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +584,7 @@
 				51AE33071F677A7F00D7CCA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,8 @@
 //
 
 #import "FXMessageViewController.h"
-
+#import "FXTest1ViewController.h"
+#import "FXTest2ViewController.h"
 @interface FXMessageViewController ()
 
 @end
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -47,4 +49,38 @@
     cell.textLabel.text=str;
     return cell;
 }
+//实现单元格的点击方法
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //实例化控制器
+    FXTest1ViewController *test1=[[FXTest1ViewController alloc] init];
+
+    //设置背景颜色
+    test1.view.backgroundColor=[UIColor redColor];
+
+    
+   //添加btn
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeContactAdd];
+    
+    btn.frame=CGRectMake(100, 100, 30, 30);
+    
+    [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    [test1.view addSubview:btn];
+    //加入栈顶
+    [self.navigationController pushViewController:test1 animated:YES];
+}
+
+//响应点击
+-(void)clickBtn{
+    
+        //实例化test12
+        FXTest2ViewController *test2=[[FXTest2ViewController alloc] init];
+        //设置背景颜色
+        test2.view.backgroundColor=[UIColor yellowColor];
+        //把test2压入栈顶
+        [self.navigationController pushViewController:test2 animated:YES];
+}
+
+
 @end

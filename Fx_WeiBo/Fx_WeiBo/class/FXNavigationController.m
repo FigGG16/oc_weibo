@@ -16,8 +16,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    //初始化父类方法
+    [super pushViewController:viewController animated:animated];
+    
+    //过滤掉首页的导航按钮
+    if(self.viewControllers.count>1)
+    {
+
+    //自定义左边按钮
+    viewController.navigationItem.leftBarButtonItem=[self addItemImage:@"navigationbar_back_withtext" selectImage:@"navigationbar_back_withtext_highlighted" action:@selector(back)];
+    
+    //自定义右边按钮
+    viewController.navigationItem.rightBarButtonItem=[self addItemImage:@"navigationbar_more" selectImage:@"navigationbar_more_highlighted" action:@selector(more)];
+    }
+}
+
+/**
+ 导航Item的抽取
+ @param image 图片
+ @param selImage 选中图片
+ @param action 点击事件
+ @return   UIBarButtonItem
+ */
+
+
+
+-(UIBarButtonItem *)addItemImage:(NSString *)image selectImage:(NSString *)selImage action:(SEL)action
+{
+    UIButton *Btn =[[UIButton alloc] init];
+    //设置普通按钮
+    [Btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    //设置按钮尺寸
+    Btn.frame=CGRectMake(2, 2, 40, 40);
+    //设置高亮按钮
+    [Btn setImage:[UIImage imageNamed:selImage] forState:UIControlStateHighlighted];
+    //自定义UIBarButtonItem按钮
+    UIBarButtonItem *item=[[UIBarButtonItem alloc] initWithCustomView:Btn];
+    //添加点击事件
+    [Btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return item;
+}
+
+-(void)more
+{
+    [self popToRootViewControllerAnimated:YES];
+}
+
+-(void)back
+{
+    [self popViewControllerAnimated:YES];
+}
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
