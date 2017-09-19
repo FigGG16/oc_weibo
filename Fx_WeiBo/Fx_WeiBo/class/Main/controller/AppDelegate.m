@@ -24,7 +24,7 @@
     //    1.初始化控制器
     //    2.给窗口设置根控制器
     //    3.显示窗口
-    
+    FXLog(@"feixiang");
     //    初始化控制器
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

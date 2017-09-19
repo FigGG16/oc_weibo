@@ -7,7 +7,6 @@
 //
 
 #import "FXHomeViewController.h"
-
 @interface FXHomeViewController ()
 
 @end
@@ -16,13 +15,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+//    //自定义左边按钮
+    self.navigationItem.leftBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_friendsearch" selectImage:@"navigationbar_friendsearch_highlighted" action:@selector(friendSearch)];
+    
+    //自定义右边按钮
+    self.navigationItem.rightBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_pop" selectImage:@"navigationbar_pop_highlighted" action:@selector(pop)];
+    
+}
+-(void)friendSearch
+{
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)pop
+{
+
 }
+
 
 /*
 #pragma mark - Navigation

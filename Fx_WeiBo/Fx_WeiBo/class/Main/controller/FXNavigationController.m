@@ -8,6 +8,7 @@
 
 #import "FXNavigationController.h"
 
+
 @interface FXNavigationController ()
 
 @end
@@ -16,7 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    //返回一个Item对象 并可以对改对象的样式（颜色和形状等）进行设置
+    //拿到局部的item
+    UIBarButtonItem *item= [UIBarButtonItem appearance];
+    //新建字典
+    NSMutableDictionary *testDic=[NSMutableDictionary dictionary];
+    //根据键值更改颜色
+    testDic[NSForegroundColorAttributeName] = [UIColor orangeColor];
+    //设置item
+    [item setTitleTextAttributes:testDic forState:UIControlStateNormal];
+    
+    
+    //不可点击时
+    NSMutableDictionary *disableDic=[NSMutableDictionary dictionary];
+    //根据键值更改颜色
+    disableDic[NSForegroundColorAttributeName] = [UIColor grayColor];
+    
+    //没有选中状态的颜色
+     [item setTitleTextAttributes:disableDic forState:UIControlStateDisabled];
 }
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
@@ -28,10 +47,10 @@
     {
 
     //自定义左边按钮
-    viewController.navigationItem.leftBarButtonItem=[self addItemImage:@"navigationbar_back_withtext" selectImage:@"navigationbar_back_withtext_highlighted" action:@selector(back)];
+    viewController.navigationItem.leftBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_back_withtext" selectImage:@"navigationbar_back_withtext_highlighted" action:@selector(back)];
     
     //自定义右边按钮
-    viewController.navigationItem.rightBarButtonItem=[self addItemImage:@"navigationbar_more" selectImage:@"navigationbar_more_highlighted" action:@selector(more)];
+    viewController.navigationItem.rightBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_more" selectImage:@"navigationbar_more_highlighted" action:@selector(more)];
     }
 }
 

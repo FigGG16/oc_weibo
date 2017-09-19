@@ -17,15 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"写私信" style:UIBarButtonItemStyleDone target:self action:@selector(mail)];
     
-    // Do any additional setup after loading the view.
+  
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//关闭导航控制器的选中状态
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.rightBarButtonItem.enabled=NO;
 }
 
+-(void)mail
+{
+
+}
 //返回行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
