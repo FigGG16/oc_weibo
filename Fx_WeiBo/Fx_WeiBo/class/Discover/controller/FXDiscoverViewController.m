@@ -7,17 +7,46 @@
 //
 
 #import "FXDiscoverViewController.h"
-
+#import "FXSearchBar.h"
 @interface FXDiscoverViewController ()
-
 @end
 
 @implementation FXDiscoverViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    //实例化imageView
+//    UIImageView *searchIcon=[[UIImageView alloc] init];
+//    //添加图片
+//    searchIcon.image=[UIImage imageNamed:@"tabbar_discover"];
+//    //设置尺寸
+//    searchIcon.frame=CGRectMake(0, 0, 30, 30);
+//    
+//    //实例化TextFile
+//    UITextField *textField=[[UITextField alloc] init];
+//    //设置尺寸
+//    textField.frame=CGRectMake(1, 1, 300, 30);
+//    //设置背景颜色
+//    textField.backgroundColor=[UIColor redColor];
+//    //设置占位文字
+//    textField.placeholder=@"请输入搜索条件";
+//    
+//    //文本编辑时添加清除按钮
+//    textField.clearsOnBeginEditing=YES;
+//    textField.clearButtonMode=UITextFieldViewModeWhileEditing;
+//    
+//    //设置图片
+//    textField.leftView=searchIcon;
+//    textField.leftViewMode=UITextFieldViewModeUnlessEditing;
+//    
+    //添加到导航栏
+    self.navigationItem.titleView=[FXSearchBar addSearchBarImage:@"tabbar_discover" plachHolder:@"请输入搜索条件" frame:CGRectMake(1, 1, 300, 30)];
+
     // Do any additional setup after loading the view.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
