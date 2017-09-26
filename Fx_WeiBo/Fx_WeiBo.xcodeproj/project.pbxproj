@@ -23,6 +23,7 @@
 		51AE32F01F677A7F00D7CCA1 /* Fx_WeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32EF1F677A7F00D7CCA1 /* Fx_WeiBoTests.m */; };
 		51AE32FB1F677A7F00D7CCA1 /* Fx_WeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32FA1F677A7F00D7CCA1 /* Fx_WeiBoUITests.m */; };
 		51CF49EB1F790A250042F082 /* FXSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CF49EA1F790A250042F082 /* FXSearchBar.m */; };
+		51F76F0D1F79FD7100C669A4 /* FXDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76F0C1F79FD7100C669A4 /* FXDropdownView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		51AE32FC1F677A7F00D7CCA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51CF49E91F790A250042F082 /* FXSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXSearchBar.h; sourceTree = "<group>"; };
 		51CF49EA1F790A250042F082 /* FXSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXSearchBar.m; sourceTree = "<group>"; };
+		51F76F0B1F79FD7100C669A4 /* FXDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDropdownView.h; sourceTree = "<group>"; };
+		51F76F0C1F79FD7100C669A4 /* FXDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDropdownView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 		510A33981F709B1D00E57EF7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				51F76F0B1F79FD7100C669A4 /* FXDropdownView.h */,
+				51F76F0C1F79FD7100C669A4 /* FXDropdownView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				510A33D91F709E7F00E57EF7 /* main.m in Sources */,
 				510A33D41F709E0100E57EF7 /* FXTaBarController.m in Sources */,
 				510A33BB1F709B1D00E57EF7 /* FXTest1ViewController.m in Sources */,
+				51F76F0D1F79FD7100C669A4 /* FXDropdownView.m in Sources */,
 				510A33D71F709E7500E57EF7 /* AppDelegate.m in Sources */,
 				510A33D31F709E0100E57EF7 /* FXNavigationController.m in Sources */,
 				51CF49EB1F790A250042F082 /* FXSearchBar.m in Sources */,

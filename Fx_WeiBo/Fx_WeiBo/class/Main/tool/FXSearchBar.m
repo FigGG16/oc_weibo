@@ -10,6 +10,14 @@
 
 @implementation FXSearchBar
 
+/**
+ <#Description#>
+
+ @param image 图片
+ @param placeHoder 占位符
+ @param frame frame
+ @return UITextField
+ */
 +(UITextField *)addSearchBarImage:(NSString *)image plachHolder:(NSString *)placeHoder frame:(CGRect)frame
 {
     //实例化imageView
@@ -24,7 +32,7 @@
     //设置尺寸
     textField.frame=frame;
     //设置背景颜色
-    textField.backgroundColor=[UIColor redColor];
+    textField.backgroundColor=[UIColor whiteColor];
     //设置占位文字
     textField.placeholder=placeHoder;
     
