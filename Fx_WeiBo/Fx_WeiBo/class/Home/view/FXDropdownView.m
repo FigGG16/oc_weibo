@@ -22,7 +22,7 @@
         dropdownView.backgroundColor=[UIColor whiteColor];
         
         //尺寸
-        dropdownView.frame=CGRectMake(0, 64, 375, 300);
+        dropdownView.frame=CGRectMake(0, 64,[UIScreen mainScreen].bounds.size.width, 300);
         
         //强引用
         _dropView=dropdownView;
@@ -64,6 +64,12 @@
         _dropView = [[UIView alloc] init];
     }
     return _dropView;
+}
+
+//当触摸控制器view时调用
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self removeFromSuperview];
 }
 
 

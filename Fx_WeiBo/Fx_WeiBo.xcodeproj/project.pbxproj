@@ -18,6 +18,8 @@
 		510A33D71F709E7500E57EF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 510A33D61F709E7500E57EF7 /* AppDelegate.m */; };
 		510A33D91F709E7F00E57EF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 510A33D81F709E7F00E57EF7 /* main.m */; };
 		510A33DF1F70B69300E57EF7 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 510A33DE1F70B69300E57EF7 /* UIBarButtonItem+Extension.m */; };
+		511B7B921F8B5D3000A1D49F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 511B7B911F8B5D3000A1D49F /* UIView+Extension.m */; };
+		511B7B951F8B64D600A1D49F /* FXTabar.m in Sources */ = {isa = PBXBuildFile; fileRef = 511B7B941F8B64D600A1D49F /* FXTabar.m */; };
 		51AE32E21F677A7F00D7CCA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51AE32E11F677A7F00D7CCA1 /* Assets.xcassets */; };
 		51AE32E51F677A7F00D7CCA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AE32E31F677A7F00D7CCA1 /* LaunchScreen.storyboard */; };
 		51AE32F01F677A7F00D7CCA1 /* Fx_WeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32EF1F677A7F00D7CCA1 /* Fx_WeiBoTests.m */; };
@@ -66,6 +68,10 @@
 		510A33DD1F70B69300E57EF7 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		510A33DE1F70B69300E57EF7 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		510A33E01F70BE5600E57EF7 /* Fx_WeiBo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fx_WeiBo_Prefix.pch; sourceTree = "<group>"; };
+		511B7B901F8B5D3000A1D49F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		511B7B911F8B5D3000A1D49F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		511B7B931F8B64D600A1D49F /* FXTabar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTabar.h; sourceTree = "<group>"; };
+		511B7B941F8B64D600A1D49F /* FXTabar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTabar.m; sourceTree = "<group>"; };
 		51AE32D21F677A7F00D7CCA1 /* Fx_WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fx_WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51AE32E11F677A7F00D7CCA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51AE32E41F677A7F00D7CCA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 			children = (
 				51F76F0B1F79FD7100C669A4 /* FXDropdownView.h */,
 				51F76F0C1F79FD7100C669A4 /* FXDropdownView.m */,
+				511B7B931F8B64D600A1D49F /* FXTabar.h */,
+				511B7B941F8B64D600A1D49F /* FXTabar.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -367,6 +375,8 @@
 		51CF49DC1F78FDD00042F082 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				511B7B901F8B5D3000A1D49F /* UIView+Extension.h */,
+				511B7B911F8B5D3000A1D49F /* UIView+Extension.m */,
 				51CF49E91F790A250042F082 /* FXSearchBar.h */,
 				51CF49EA1F790A250042F082 /* FXSearchBar.m */,
 			);
@@ -510,12 +520,14 @@
 				510A33D91F709E7F00E57EF7 /* main.m in Sources */,
 				510A33D41F709E0100E57EF7 /* FXTaBarController.m in Sources */,
 				510A33BB1F709B1D00E57EF7 /* FXTest1ViewController.m in Sources */,
+				511B7B951F8B64D600A1D49F /* FXTabar.m in Sources */,
 				51F76F0D1F79FD7100C669A4 /* FXDropdownView.m in Sources */,
 				510A33D71F709E7500E57EF7 /* AppDelegate.m in Sources */,
 				510A33D31F709E0100E57EF7 /* FXNavigationController.m in Sources */,
 				51CF49EB1F790A250042F082 /* FXSearchBar.m in Sources */,
 				510A33BA1F709B1D00E57EF7 /* FXProfileViewController.m in Sources */,
 				510A33B41F709B1D00E57EF7 /* FXHomeViewController.m in Sources */,
+				511B7B921F8B5D3000A1D49F /* UIView+Extension.m in Sources */,
 				510A33BC1F709B1D00E57EF7 /* FXTest2ViewController.m in Sources */,
 				510A33B91F709B1D00E57EF7 /* FXMessageViewController.m in Sources */,
 				510A33B31F709B1D00E57EF7 /* FXDiscoverViewController.m in Sources */,

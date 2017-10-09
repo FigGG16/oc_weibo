@@ -14,8 +14,9 @@
 #import "FXDiscoverViewController.h"
 
 #import "FXNavigationController.h"
+#import "FXTabar.h"
 
-@interface FXTaBarController ()
+@interface FXTaBarController ()<FXTabBarDelegate>
 
 @end
 
@@ -24,9 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setValue:[[FXTabar alloc] init] forKey:@"tabBar"];
+
+    FXTabar *plusBtn=[[FXTabar alloc]init];
+    
+    
+    plusBtn.delegate=self;
+    
     //实例化各个视图控制器
     FXHomeViewController *homeviewC=[[FXHomeViewController alloc] init];
-    
     FXMessageViewController *messageViewC=[[FXMessageViewController alloc]init];
     FXProfileViewController *profileviewC=[[FXProfileViewController alloc]init];
     FXDiscoverViewController *discoverViewC=[[FXDiscoverViewController alloc] init];
@@ -64,11 +71,15 @@
     
     [self addChildViewController:nav];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)clickPlusBtn:(FXTabar *)tabbar
+{
+    UIViewController *VC=[[UIViewController alloc] init];
+    
+    VC.view.backgroundColor=[UIColor redColor];
+    
+//    [self.navigationController pushViewController:VC animated:YES];
+    [self presentViewController:VC animated:YES completion:nil];
 }
-
 /*
 #pragma mark - Navigation
 
