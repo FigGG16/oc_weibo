@@ -17,7 +17,7 @@
 
 
 
-@interface FXTabar : UITabBar<FXTabBarDelegate>
+@interface FXTabar : UITabBar
 
 @property(nonatomic,strong)UIButton *plusBtn;
 

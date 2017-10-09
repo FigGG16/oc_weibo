@@ -29,8 +29,8 @@
     [plusBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_highlighted"] forState:UIControlStateHighlighted];
     //添加子控件
     [self addSubview:plusBtn];
-    
-    [plusBtn addTarget:self action:@selector(clickPlusBtn:) forControlEvents:UIControlEventTouchUpInside];
+    //添加监听
+    [plusBtn addTarget:self action:@selector(plusBtnClick) forControlEvents:UIControlEventTouchUpInside];
 
     _plusBtn=plusBtn;
 
@@ -78,6 +78,7 @@
 }
 
 -(void)plusBtnClick{
+    
    if([self.delegate respondsToSelector:@selector(clickPlusBtn:)])
    {
        [self.delegate clickPlusBtn:self];

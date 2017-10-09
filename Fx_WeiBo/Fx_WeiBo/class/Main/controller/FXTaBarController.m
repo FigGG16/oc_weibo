@@ -30,6 +30,7 @@
     FXTabar *plusBtn=[[FXTabar alloc]init];
     
     
+
     plusBtn.delegate=self;
     
     //实例化各个视图控制器
@@ -71,6 +72,7 @@
     
     [self addChildViewController:nav];
 }
+
 -(void)clickPlusBtn:(FXTabar *)tabbar
 {
     UIViewController *VC=[[UIViewController alloc] init];
