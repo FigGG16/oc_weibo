@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class FXTabar;
-
+//声明协议
 @protocol FXTabBarDelegate <NSObject>
 
 - (void)clickPlusBtn:(FXTabar *)tabbar;

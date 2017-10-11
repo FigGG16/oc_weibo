@@ -15,7 +15,7 @@
 
 #import "FXNavigationController.h"
 #import "FXTabar.h"
-
+//遵守协议
 @interface FXTaBarController ()<FXTabBarDelegate>
 
 @end
@@ -25,12 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置KVC,自定义tabBar
     [self setValue:[[FXTabar alloc] init] forKey:@"tabBar"];
-
+    
+    //重新初始化(如果不初始化，KVC将FXTabar变成标签控制器管理的对象，报错)
     FXTabar *plusBtn=[[FXTabar alloc]init];
     
-    
-
+   //设置代理
     plusBtn.delegate=self;
     
     //实例化各个视图控制器
@@ -73,14 +74,26 @@
     [self addChildViewController:nav];
 }
 
+//实现协议方法
 -(void)clickPlusBtn:(FXTabar *)tabbar
 {
     UIViewController *VC=[[UIViewController alloc] init];
     
     VC.view.backgroundColor=[UIColor redColor];
     
+    UIButton *VcBtn=[UIButton buttonWithType:UIButtonTypeContactAdd];
+    VcBtn.frame=CGRectMake(10, 10, 40, 40);
+    
+    [VcBtn addTarget:self action:@selector(dismissVc) forControlEvents:UIControlEventTouchUpInside];
+    [VC.view addSubview:VcBtn];
+    
 //    [self.navigationController pushViewController:VC animated:YES];
     [self presentViewController:VC animated:YES completion:nil];
+}
+
+-(void)dismissVc{
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

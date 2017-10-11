@@ -12,6 +12,7 @@
 #import "FXMessageViewController.h"
 #import "FXProfileViewController.h"
 #import "FXDiscoverViewController.h"
+#import "FXNewFeatureViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -32,7 +33,7 @@
     FXTaBarController * taBer=[[FXTaBarController alloc] init];
 
     //创建TabBarController，它是程序底部的标签页,是一个容器
-    self.window.rootViewController=taBer;
+    self.window.rootViewController=[[FXNewFeatureViewController alloc] init];
     //显示
     [self.window makeKeyAndVisible];
     return YES;

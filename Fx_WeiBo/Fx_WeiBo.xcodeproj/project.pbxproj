@@ -20,6 +20,7 @@
 		510A33DF1F70B69300E57EF7 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 510A33DE1F70B69300E57EF7 /* UIBarButtonItem+Extension.m */; };
 		511B7B921F8B5D3000A1D49F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 511B7B911F8B5D3000A1D49F /* UIView+Extension.m */; };
 		511B7B951F8B64D600A1D49F /* FXTabar.m in Sources */ = {isa = PBXBuildFile; fileRef = 511B7B941F8B64D600A1D49F /* FXTabar.m */; };
+		5147A48D1F8C541800B4A982 /* FXNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5147A48C1F8C541800B4A982 /* FXNewFeatureViewController.m */; };
 		51AE32E21F677A7F00D7CCA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51AE32E11F677A7F00D7CCA1 /* Assets.xcassets */; };
 		51AE32E51F677A7F00D7CCA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AE32E31F677A7F00D7CCA1 /* LaunchScreen.storyboard */; };
 		51AE32F01F677A7F00D7CCA1 /* Fx_WeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32EF1F677A7F00D7CCA1 /* Fx_WeiBoTests.m */; };
@@ -72,6 +73,8 @@
 		511B7B911F8B5D3000A1D49F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		511B7B931F8B64D600A1D49F /* FXTabar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTabar.h; sourceTree = "<group>"; };
 		511B7B941F8B64D600A1D49F /* FXTabar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTabar.m; sourceTree = "<group>"; };
+		5147A48B1F8C541800B4A982 /* FXNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXNewFeatureViewController.h; sourceTree = "<group>"; };
+		5147A48C1F8C541800B4A982 /* FXNewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = FXNewFeatureViewController.m; sourceTree = "<group>"; };
 		51AE32D21F677A7F00D7CCA1 /* Fx_WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fx_WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51AE32E11F677A7F00D7CCA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51AE32E41F677A7F00D7CCA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -300,6 +303,39 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		5147A4871F8C520A00B4A982 /* newFeature */ = {
+			isa = PBXGroup;
+			children = (
+				5147A4881F8C520A00B4A982 /* controller */,
+				5147A4891F8C520A00B4A982 /* modal */,
+				5147A48A1F8C520A00B4A982 /* view */,
+			);
+			path = newFeature;
+			sourceTree = "<group>";
+		};
+		5147A4881F8C520A00B4A982 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				5147A48B1F8C541800B4A982 /* FXNewFeatureViewController.h */,
+				5147A48C1F8C541800B4A982 /* FXNewFeatureViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		5147A4891F8C520A00B4A982 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		5147A48A1F8C520A00B4A982 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		51AE32C91F677A7F00D7CCA1 = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +397,7 @@
 		51AE33081F677B1F00D7CCA1 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				5147A4871F8C520A00B4A982 /* newFeature */,
 				510A338D1F709B1D00E57EF7 /* Discover */,
 				510A33931F709B1D00E57EF7 /* Home */,
 				510A33991F709B1D00E57EF7 /* Main */,
@@ -526,6 +563,7 @@
 				510A33D31F709E0100E57EF7 /* FXNavigationController.m in Sources */,
 				51CF49EB1F790A250042F082 /* FXSearchBar.m in Sources */,
 				510A33BA1F709B1D00E57EF7 /* FXProfileViewController.m in Sources */,
+				5147A48D1F8C541800B4A982 /* FXNewFeatureViewController.m in Sources */,
 				510A33B41F709B1D00E57EF7 /* FXHomeViewController.m in Sources */,
 				511B7B921F8B5D3000A1D49F /* UIView+Extension.m in Sources */,
 				510A33BC1F709B1D00E57EF7 /* FXTest2ViewController.m in Sources */,

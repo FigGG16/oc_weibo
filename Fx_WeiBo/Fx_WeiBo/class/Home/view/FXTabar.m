@@ -77,10 +77,12 @@
     }
 }
 
+//响应button的点击
 -(void)plusBtnClick{
-    
+    //判断代理方法是否实现
    if([self.delegate respondsToSelector:@selector(clickPlusBtn:)])
    {
+       //传递self
        [self.delegate clickPlusBtn:self];
    }
 }
