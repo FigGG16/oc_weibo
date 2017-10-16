@@ -7,7 +7,7 @@
 //
 
 #import "FXNewFeatureViewController.h"
-
+#import "FXTaBarController.h"
 @interface FXNewFeatureViewController ()
 
 @property(nonatomic,strong)UIScrollView *scrollView;
@@ -125,20 +125,27 @@
    startBtn.frame=CGRectMake(150, 500, 100, 40);
    
    //设置背景图
-   [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button_highlighted"] forState:UIControlStateNormal];
+   [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button"] forState:UIControlStateNormal];
    [startBtn setBackgroundImage:[UIImage imageNamed:@"new_feature_finish_button_highlighted"] forState:UIControlStateHighlighted];
    
    //设置标题
    [startBtn setTitle:@"开始微博" forState:UIControlStateNormal];
    //标题颜色
-   [startBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-   
+   [startBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+   //跳转标签控制器
+   [startBtn addTarget:self action:@selector(startBtnClick) forControlEvents:UIControlEventTouchUpInside];
 
    [imag addSubview:startBtn];
 }
 
+-(void)startBtnClick
+{
+   UIWindow *window=[UIApplication sharedApplication].keyWindow;
+   
+   window.rootViewController=[[FXTaBarController alloc] init];
 
 
+}
 /*
 #pragma mark - Navigation
 

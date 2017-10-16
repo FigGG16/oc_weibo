@@ -28,12 +28,37 @@
     FXLog(@"feixiang");
     //    初始化控制器
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //获取当前程序的版本号
+    NSString *lastBundleVersion=[[NSUserDefaults standardUserDefaults] objectForKey:@"CFBundleVersion"];
     
-    //实例化taber控制器
-    FXTaBarController * taBer=[[FXTaBarController alloc] init];
+    //获取info.plist文件
+    NSDictionary *info=[NSBundle mainBundle].infoDictionary;
+    
+    //获取键值
+    NSString *currentBundleVersion=info[@"CFBundleVersion"];
+    
+    //打印沙盒路径
+    NSString *path=NSHomeDirectory();
+    
+    //判断版本号
+    if([lastBundleVersion isEqualToString:currentBundleVersion])
+    {
+        //实例化taber控制器
+        FXTaBarController *taBer=[[FXTaBarController alloc] init];
+        self.window.rootViewController=taBer;
+    }else
+    {
+        //将版本不同的存入沙盒
+        [[NSUserDefaults standardUserDefaults] setObject:currentBundleVersion forKey:@"CFBundleVersion"];
+        
+        //写入沙盒
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        //创建TabBarController，它是程序底部的标签页,是一个容器
+        self.window.rootViewController=[[FXNewFeatureViewController alloc] init];
+    }
+    
 
-    //创建TabBarController，它是程序底部的标签页,是一个容器
-    self.window.rootViewController=[[FXNewFeatureViewController alloc] init];
     //显示
     [self.window makeKeyAndVisible];
     return YES;
