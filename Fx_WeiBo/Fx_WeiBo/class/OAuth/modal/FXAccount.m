@@ -10,6 +10,8 @@
 //@property(nonatomic,copy)NSString *uid;
 #import "FXAccount.h"
 
+
+
 @implementation FXAccount
 
 +(instancetype)accountWithDict:(NSDictionary*)dict
@@ -19,8 +21,9 @@
     account.access_token=dict[@"access_token"];
     account.expires_in=dict[@"expires_in"];
     account.uid=dict[@"uid"];
+    account.create_time=[NSDate date];
     
-    
+    NSLog(@"读到的档==%@",account.create_time);
     return account;
 }
 
@@ -31,6 +34,8 @@
      [aCoder encodeObject:self.expires_in forKey:@"expires_in"];
      [aCoder encodeObject:self.uid forKey:@"uid"];
      [aCoder encodeObject:self.create_time forKey:@"create_time"];
+       NSLog(@"--->读到的档==%@", self.create_time);
+    
 }
 //按照规定格式取
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -41,8 +46,8 @@
        
         self.access_token=[aDecoder decodeObjectForKey:@"access_token"];
         self.expires_in=[aDecoder decodeObjectForKey:@"expires_in"];
-        self.expires_in=[aDecoder decodeObjectForKey:@"uid"];
-        self.expires_in=[aDecoder decodeObjectForKey:@"create_time"];
+        self.uid=[aDecoder decodeObjectForKey:@"uid"];
+        self.create_time=[aDecoder decodeObjectForKey:@"create_time"];
 
     }
     return self;

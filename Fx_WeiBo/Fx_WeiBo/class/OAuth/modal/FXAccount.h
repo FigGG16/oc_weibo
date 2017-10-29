@@ -13,8 +13,7 @@
 @property(nonatomic,copy)NSString *access_token;
 @property(nonatomic,copy)NSString *expires_in;
 @property(nonatomic,copy)NSString *uid;
-@property(nonatomic,copy)NSDate *create_time;
+@property(nonatomic,copy)NSDate * create_time;
 
 +(instancetype)accountWithDict:(NSDictionary*)dict;
--(void)encodeWithCoder:(NSCoder *)aCoder;
 @end

@@ -104,10 +104,8 @@
     //post提交
     [man POST:@"https://api.weibo.com/oauth2/access_token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        
-        
         FXAccount *account=[FXAccount accountWithDict:responseObject];
-        NSLog(@"---account==%@",account.access_token);
+
         
         
         
@@ -124,6 +122,7 @@
 //        [responseObject writeToFile:docPath atomically:YES];
 //
         //保存数据
+        
         [FXAccountTool saveAccount:account];
         
         
