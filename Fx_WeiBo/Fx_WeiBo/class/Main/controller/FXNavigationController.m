@@ -8,7 +8,6 @@
 
 #import "FXNavigationController.h"
 
-
 @interface FXNavigationController ()
 
 @end
@@ -46,8 +45,10 @@
     if(self.viewControllers.count>1)
     {
 
+
     //自定义左边按钮
     viewController.navigationItem.leftBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_back_withtext" selectImage:@"navigationbar_back_withtext_highlighted" action:@selector(back)];
+
     
     //自定义右边按钮
     viewController.navigationItem.rightBarButtonItem=[UIBarButtonItem addItemTarget:self Image:@"navigationbar_more" selectImage:@"navigationbar_more_highlighted" action:@selector(more)];

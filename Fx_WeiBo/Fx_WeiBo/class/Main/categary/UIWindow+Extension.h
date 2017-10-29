@@ -10,5 +10,5 @@
 
 @interface UIWindow (Extension)
 //切换窗口
-+(void)switchWindow;
+-(void)switchRootViewController;
 @end

@@ -12,7 +12,7 @@
 
 @implementation UIWindow (Extension)
 //切换窗口
-+(void)switchWindow
+-(void)switchRootViewController
 {
     UIWindow *window=[UIApplication sharedApplication].keyWindow;    /////////////////////// ------判断新特性---------  //////////////////////
     //获取当前程序的版本号
