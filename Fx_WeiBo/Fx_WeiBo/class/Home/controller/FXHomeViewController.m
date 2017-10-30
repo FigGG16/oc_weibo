@@ -8,6 +8,9 @@
 
 #import "FXHomeViewController.h"
 #import "FXDropdownView.h"
+#import"AFNetworking.h"
+#import "FXAccount.h"
+#import "FXAccountTool.h"
 @interface FXHomeViewController ()
 
 @end
@@ -26,8 +29,12 @@
     UIButton *titleButton=[[UIButton alloc]init];
     //设置尺寸
     titleButton.frame=CGRectMake(1, 1, 100, 40);
+    
+    //通过三元运算符判断是否有值
+    NSString *name=[FXAccountTool account].name;
+    
     //设置标题
-    [titleButton setTitle:@"首页" forState:UIControlStateNormal];
+    [titleButton setTitle:name?name:@"首页" forState:UIControlStateNormal];
     //设置颜色
     [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //设置图片
@@ -43,6 +50,9 @@
     
     //应用到导航栏
     self.navigationItem.titleView=titleButton;
+    
+    //请求信息
+    [self setUpUserInf];
     
 }
 
@@ -62,39 +72,45 @@
     //显示
     [dropView show];
 
-    
-//    
-//    //实例化ImageView
-//    UIView *dropdownView=[[UIView alloc] init];
-//    //背景颜色
-//    dropdownView.backgroundColor=[UIColor whiteColor];
-//
-//    //尺寸
-//    dropdownView.frame=CGRectMake(0, 64, 375, 300);
-//    //实例化button
-//    UIButton *addButton=[UIButton buttonWithType:UIButtonTypeContactAdd];
-//    
-//    //设置Frame
-//    addButton.frame=CGRectMake(30, 40, addButton.frame.size.width, addButton.frame.size.height);
-//    //往图片添加Button
-//    [dropdownView addSubview:addButton];
-//    
-//    //获取window数组，再取出最后一个数组对象(window)
-//    UIWindow *window=[[UIApplication sharedApplication].windows lastObject];
-//    
-//    //添加蒙版
-//    UIView *cover=[[UIView alloc]initWithFrame:window.bounds];
-//    //背景透明
-//    cover.backgroundColor=[UIColor clearColor];
-//    //添加子控件
-//    [cover addSubview:dropdownView];
-//
-//    //添加到Window
-//    [window addSubview:cover];
-    
 }
 
 
+//获取用户信息
+-(void)setUpUserInf
+{
+    //创建一个账号模型
+    FXAccount *account=[FXAccountTool account];
+    
+    //创建一个管理对象
+    AFHTTPRequestOperationManager *man=[AFHTTPRequestOperationManager manager];
+    //从模型中取出请求信息
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    //存到字典
+    params[@"access_token"]=account.access_token;
+    params[@"uid"]=account.uid;
+    
+    //发送get请求
+    [man GET:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSString *name=responseObject[@"name"];
+        
+        
+        
+        //获取titileView;
+        UIButton *titleBtn=(UIButton *)self.navigationItem.titleView;
+        
+//        [titleBtn setTitle:name forState:UIControlStateNormal];
+        
+        
+        NSLog(@"responseObject=%@",responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求失败");
+    }
+     
+     ];
+}
 
 -(void)friendSearch
 {

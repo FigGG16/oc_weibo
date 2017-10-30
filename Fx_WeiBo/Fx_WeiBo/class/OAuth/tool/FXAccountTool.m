@@ -26,7 +26,8 @@
 +(FXAccount *)account
 {
   FXAccount *account=  [NSKeyedUnarchiver unarchiveObjectWithFile:FXPath];
-
+  
+    NSLog(@"--->%@",FXPath);
     if(account.create_time!=nil)
     {
 

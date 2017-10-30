@@ -22,7 +22,6 @@
     account.expires_in=dict[@"expires_in"];
     account.uid=dict[@"uid"];
     account.create_time=[NSDate date];
-    
     NSLog(@"读到的档==%@",account.create_time);
     return account;
 }
@@ -34,7 +33,9 @@
      [aCoder encodeObject:self.expires_in forKey:@"expires_in"];
      [aCoder encodeObject:self.uid forKey:@"uid"];
      [aCoder encodeObject:self.create_time forKey:@"create_time"];
-       NSLog(@"--->读到的档==%@", self.create_time);
+    [aCoder encodeObject:self.name forKey:@"name"];
+    
+    NSLog(@"--->读到的档==%@", self.create_time);
     
 }
 //按照规定格式取
@@ -48,7 +49,8 @@
         self.expires_in=[aDecoder decodeObjectForKey:@"expires_in"];
         self.uid=[aDecoder decodeObjectForKey:@"uid"];
         self.create_time=[aDecoder decodeObjectForKey:@"create_time"];
-
+        self.name=[aDecoder decodeObjectForKey:@"name"];
+        
     }
     return self;
 }
