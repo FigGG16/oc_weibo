@@ -10,4 +10,6 @@
 
 @interface FXHomeViewController : UITableViewController
 
+@property(nonatomic,copy)NSString *name;
+@property(nonatomic,strong)NSMutableArray *status;
 @end

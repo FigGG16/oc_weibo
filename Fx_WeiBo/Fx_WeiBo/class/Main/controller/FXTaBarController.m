@@ -54,7 +54,7 @@
 {
     FXNavigationController *nav=[[FXNavigationController alloc]initWithRootViewController:VC];
     //指定背景颜色
-    VC.view.backgroundColor=[UIColor yellowColor];
+//    VC.view.backgroundColor=[UIColor yellowColor];
     
     //设置navigationItem标题
     VC.navigationItem.title=title;
