@@ -12,4 +12,6 @@
 
 @property(nonatomic,copy)NSString *name;
 @property(nonatomic,strong)NSMutableArray *status;
+@property(nonatomic,strong) UIRefreshControl *control;
+
 @end

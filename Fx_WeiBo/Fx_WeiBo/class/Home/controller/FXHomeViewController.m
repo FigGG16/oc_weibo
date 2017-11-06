@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "FXStatus.h"
 #import "FXUser.h"
+#import "MJExtension.h"
 @interface FXHomeViewController ()
 
 @end
@@ -30,16 +31,114 @@
     //获取微博
     [self loadStatus];
     
+    
+    //下拉刷新
+    [self setUpRefershStatus];
+    
 }
 
+//此方法可以改变背景颜色
+-(void)viewWillAppear:(BOOL)animated
+{
+
+
+}
+
+//下拉刷新方法
+-(void)setUpRefershStatus
+{
+//刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc] init];
+    _control=control;
+    [self.tableView addSubview:control];
+    //开启刷新
+//    [control beginRefreshing];
+    
+    
+    //实现监听方法
+    [control addTarget:self action:@selector(refershStatusChange) forControlEvents:UIControlEventValueChanged];
+
+}
+
+//下拉刷新的监听方法
+-(void)refershStatusChange
+{
+    //https://api.weibo.com/2/statuses/home_timeline.json
+    
+    //创建一个账号模型
+    FXAccount *account=[FXAccountTool account];
+    
+    //创建一个管理对象
+    AFHTTPRequestOperationManager *man=[AFHTTPRequestOperationManager manager];
+    //从模型中取出请求信息
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    
+    //存到字典
+    params[@"access_token"]=account.access_token;
+    //    params[@"count"]=@1;
+
+    //加载最新微博(解决重复包含)
+    FXStatus *first   = [self.status firstObject];
+
+    if(first!=nil)
+    {
+          params[@"since_id"]=first.idstr;
+    }
+
+    
+    //发送get请求
+    [man GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //第三方框架快速转模型
+        NSArray *newStatus= [FXStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        if(newStatus.count)
+        {
+            NSLog(@"更新了%ld条数据",newStatus.count);
+        }
+        else
+        {
+        
+         
+        }
+        
+        //根据数组内容的个数，获取范围
+        NSRange range=NSMakeRange(0, newStatus.count);
+        
+        // 设置位置
+        NSIndexSet *set= [NSIndexSet indexSetWithIndexesInRange:range];
+        
+        //在前方插入
+        [self.status insertObjects:newStatus atIndexes:set];
+        
+        
+        
+        [self.control endRefreshing];
+        
+        //更新cell数据
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求失败");
+    }
+     
+     ];
+
+
+}
+
+//懒加载
 -(NSMutableArray*)status
 {
+    
  if(_status==nil)
  {
      _status=[NSMutableArray array];
  }
     
   return _status;
+    
 }
 
 

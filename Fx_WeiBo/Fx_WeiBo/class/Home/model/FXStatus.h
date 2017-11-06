@@ -18,6 +18,7 @@
 //微博user属性
 @property(nonatomic,strong)FXUser *user;
 
+
 +(instancetype)statusWithDict:(NSDictionary *)dict;
 
 @end
