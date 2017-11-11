@@ -17,5 +17,10 @@
     // Drawing code
 }
 */
+//产生一个xib对象
++(instancetype)footer
+{
+    return [[NSBundle mainBundle] loadNibNamed:@"FXLoadFooter" owner:nil options:nil].lastObject;
 
+}
 @end

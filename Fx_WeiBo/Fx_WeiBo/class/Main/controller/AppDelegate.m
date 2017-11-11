@@ -15,6 +15,8 @@
 #import "FXNewFeatureViewController.h"
 #import "FXOauthViewController.h"
 #import "FXAccountTool.h"
+#import "FXAdViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -31,9 +33,7 @@
     //    初始化控制器
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    
-    
     FXAccount *account=[FXAccountTool account];
-
     
       //必须提前指定根控制器
       [self.window makeKeyAndVisible];
@@ -65,14 +65,21 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
-
+//进入后台
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
+    
+    FXAdViewController *adVC=[[FXAdViewController alloc] init];
+    
+    self.window.rootViewController=adVC;
 }
 
-
+//进入前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    
+    
 }
 
 

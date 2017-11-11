@@ -12,6 +12,8 @@
 
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UIPageControl *pageControl;
+//定时器
+@property (weak,nonatomic)NSTimer * gTimer;
 
 @end
 
@@ -26,7 +28,9 @@
     NSInteger imageCount=4;
     //设置大小
     scroll.frame=self.view.bounds;
-    
+   
+
+   
     //循环添加image到滚动控制器
     for(int i=0;i<imageCount;i++)
     {
@@ -43,6 +47,20 @@
         if(i==3){
            [self setUpLastImage:imageV];
         }
+       
+       //添加自己的图片
+       if(i==0)
+       {
+          [self addImage:imageV myImage:@"my_1"];
+       }
+       
+       if(i==1)
+          
+       {
+          [self addImage:imageV myImage:@"my_2"];
+       }
+       
+       
         
         [scroll addSubview:imageV];
         
@@ -79,12 +97,32 @@
     //强引用控制器
     _scrollView=scroll;
     _pageControl=pageControl;
-    
+   
+   //开启时钟
+   [self createTimer];
+   
     //make control begcame delagage!
     scroll.delegate=self;
 }
 
-#pragma mark 实现代理方法
+/**
+ 添加自己的图片到当前的imageView
+
+ @param imag 当前图片的view
+ @param image 我的图片名称
+ */
+-(void)addImage:(UIImageView*)imag   myImage:(NSString *)image
+{
+   //实例化，设置frame
+   UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 200)];
+   //添加图片
+   imageView.image=[UIImage imageNamed:image];
+   //add imageView to the current imageView
+   [imag addSubview:imageView];
+   
+}
+
+#pragma mark - 实现代理方法
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //根据偏移量计算
@@ -145,6 +183,56 @@
    window.rootViewController=[[FXTaBarController alloc] init];
 
 
+}
+
+//移除定时器
+-(void )removeTimer
+{
+   [self.gTimer invalidate];
+   self.gTimer=nil;
+}
+//创建定时器
+-(void)createTimer
+{
+   //实例化定时器
+   NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(nextPageImage) userInfo:nil repeats:YES];
+   //添加到消息循环
+   [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+   self.gTimer=timer;
+   
+}
+//下一页
+- (void)nextPageImage
+{
+   //NSLog(@"下一页");
+   //防止图片编号溢出
+   static int num=0;
+   num++;
+   num=num%4;
+   CGFloat imageViewWidth=self.scrollView.frame.size.width;
+   CGPoint point=CGPointMake(imageViewWidth *num,0);
+   
+   [self.scrollView setContentOffset:point];
+   //[self.scrollView setContentOffset:point animated:YES];
+   
+}
+#pragma mark - 将要滚动开始移出定时器
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+   [self removeTimer];
+}
+
+#pragma mark - 即将拖拽，停止时钟
+-(void)scrollViewBeginDraggin:(UIScrollView *)scrollView
+{
+   [self.gTimer invalidate];
+   self.gTimer=nil;
+}
+
+#pragma mark - 拖拽结束,继续定时
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+   [self createTimer];
+   
 }
 /*
 #pragma mark - Navigation
