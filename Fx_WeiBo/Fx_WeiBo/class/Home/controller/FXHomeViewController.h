@@ -11,7 +11,8 @@
 @interface FXHomeViewController : UITableViewController
 
 @property(nonatomic,copy)NSString *name;
-@property(nonatomic,strong)NSMutableArray *status;
+//@property(nonatomic,strong)NSMutableArray *status;
+@property(nonatomic,strong)NSMutableArray *statusesFrame;
 @property(nonatomic,strong) UIRefreshControl *control;
 
 @end

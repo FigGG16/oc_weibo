@@ -16,6 +16,8 @@
 #import "FXUser.h"
 #import "FXLoadFooter.h"
 #import "MJExtension.h"
+#import "FXTableViewCell.h"
+#import "FXStatusFrame.h"
 @interface FXHomeViewController ()<UIScrollViewDelegate>
 
 @end
@@ -30,9 +32,7 @@
 //    [self setUpUserInf];
     
     self.tableView.delegate = self;
-    
 
-    
     //下拉刷新
     [self setUpRefershStatus];
     
@@ -70,19 +70,14 @@
     }
 }
 
-
 -(void)setUpFooter
 {
     FXLoadFooter *foot=[FXLoadFooter footer];
     self.tableView.tableFooterView=foot;
-    
 
-
-
-    
-    
 }
 //上拉拉刷新的监听方法
+#warning 未实现
 -(void)loadMoreStatus
 {
     //https://api.weibo.com/2/statuses/home_timeline.json
@@ -101,7 +96,7 @@
     //    params[@"count"]=@1;
     
     //加载最新微博(解决重复包含)
-    FXStatus *last   = [self.status lastObject];
+    FXStatus *last   = [self.statusesFrame lastObject];
     
     if(last!=nil)
     {
@@ -112,8 +107,31 @@
     //发送get请求
     [man GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+
+        
+        
+        
         //第三方框架快速转模型
         NSArray *newStatus= [FXStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        
+        
+        //将微博模型转化为frame模型
+        NSMutableArray *frames=[NSMutableArray array];
+        for(FXStatus *status in newStatus){
+        
+         //frame模型
+            FXStatusFrame *f=[[FXStatusFrame alloc] init];
+            
+            //把微博模型转化为frame模型
+            f.status = status;
+            
+            [frames addObject:f];
+        }
+        self.statusesFrame=frames;
+        
+        
+        
         
         
         //根据数组内容的个数，获取范围
@@ -122,16 +140,17 @@
         // 设置位置
         NSIndexSet *set= [NSIndexSet indexSetWithIndexesInRange:range];
         
+        
+        
+        
+        
         //在前方插入
 //        [self.status insertObjects:newStatus atIndexes:set];
-        [self.status addObject:newStatus];
-        
+        [self.statusesFrame addObject:newStatus];
     
-        
         [self setUpNewStatusCount:newStatus.count];
         
-        
-        
+    
         //更新cell数据
         [self.tableView reloadData];
         
@@ -167,8 +186,6 @@
     [man GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         
-        
-        
         //赋值未读数
         NSString *status=[responseObject[@"status"] description];
         
@@ -179,15 +196,12 @@
         {
             self.tabBarItem.badgeValue=status;
         }
-        
-        
-//        self.tabBarItem.badgeValue= [responseObject[@"status"] stringValue];
+    
+//     self.tabBarItem.badgeValue= [responseObject[@"status"] stringValue];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"请求失败%@",error);
     }];
-    
-
 }
 
 
@@ -233,12 +247,13 @@
     params[@"access_token"]=account.access_token;
     //    params[@"count"]=@1;
  
+#warning 有咋
     //加载最新微博(解决重复包含)
-    FXStatus *first   = [self.status firstObject];
+    FXStatusFrame *first   = [self.statusesFrame firstObject];
 
     if(first!=nil)
     {
-          params[@"since_id"]=first.idstr;
+          params[@"since_id"]=first.status.idstr;
     }
 
     
@@ -248,7 +263,20 @@
         //第三方框架快速转模型
         NSArray *newStatus= [FXStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         
-
+        //将微博模型转化为frame模型
+        NSMutableArray *frames=[NSMutableArray array];
+        for(FXStatus *status in newStatus){
+            
+            //frame模型
+            FXStatusFrame *f=[[FXStatusFrame alloc] init];
+            
+            //把微博模型转化为frame模型
+            f.status = status;
+            
+            [frames addObject:f];
+        }
+        self.statusesFrame=frames;
+        
         //根据数组内容的个数，获取范围
         NSRange range=NSMakeRange(0, newStatus.count);
         
@@ -256,15 +284,12 @@
         NSIndexSet *set= [NSIndexSet indexSetWithIndexesInRange:range];
         
         //在前方插入
-        [self.status insertObjects:newStatus atIndexes:set];
-        
-        
+        [self.statusesFrame insertObjects:frames atIndexes:set];
         
         [control endRefreshing];
         
          [self setUpNewStatusCount:newStatus.count];
 
-        
         
         //更新cell数据
         [self.tableView reloadData];
@@ -330,15 +355,15 @@
 }
 
 //懒加载
--(NSMutableArray*)status
+-(NSMutableArray*)statusesFrame
 {
     
- if(_status==nil)
+ if(_statusesFrame==nil)
  {
-     _status=[NSMutableArray array];
+     _statusesFrame=[NSMutableArray array];
  }
     
-  return _status;
+  return _statusesFrame ;
     
 }
 
@@ -373,7 +398,7 @@
             
             FXStatus *status = [FXStatus statusWithDict:dict];
             
-            [self.status addObject:status];
+            [self.statusesFrame addObject:status];
         }
         //更新cell数据
         [self.tableView reloadData];
@@ -481,38 +506,47 @@
 
 }
 
-#pragma --设置行数
+#pragma mark -设置行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return self.status.count;
-
+    return self.statusesFrame.count;
 }
 
 
-//设置单元格数据
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    #warning 未完
+    FXStatusFrame *frame =[[FXStatusFrame alloc] init];
+    return frame.cellHeight;
+}
+
+#pragma mark - 设置单元格数据
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *ID=@"cell";
+//    static NSString *ID=@"cell";
+//    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:ID];
+//    
+//    if(cell == nil){
+//    
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//    }
+//    FXStatus *status =self.status[indexPath.row];
+//    FXUser *user=status.user;
+//    //用户名
+//    cell.textLabel.text=user.name;
+//    //文本详情
+//    cell.detailTextLabel.text=status.text;
+//    //图片url地址
+//    NSString *imageUrl=user.profile_image_url;
+//    
+//    //加载图片
+//    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
+//    
+//    return cell;
+ 
+    FXTableViewCell *cell = [FXTableViewCell cellWithTableView:tableView];
     
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:ID];
-    
-    if(cell == nil){
-    
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
-    
-    FXStatus *status =self.status[indexPath.row];
-    FXUser *user=status.user;
-    //用户名
-    cell.textLabel.text=user.name;
-    //文本详情
-    cell.detailTextLabel.text=status.text;
-    //图片url地址
-    NSString *imageUrl=user.profile_image_url;
-    
-    //加载图片
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
+    cell.statusframe=self.statusesFrame[indexPath.row];
     
     return cell;
 }

@@ -74,6 +74,8 @@
 		51AE32F01F677A7F00D7CCA1 /* Fx_WeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32EF1F677A7F00D7CCA1 /* Fx_WeiBoTests.m */; };
 		51AE32FB1F677A7F00D7CCA1 /* Fx_WeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE32FA1F677A7F00D7CCA1 /* Fx_WeiBoUITests.m */; };
 		51CF49EB1F790A250042F082 /* FXSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CF49EA1F790A250042F082 /* FXSearchBar.m */; };
+		51DEE3141FB97FBB0097DA99 /* FXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DEE3131FB97FBB0097DA99 /* FXTableViewCell.m */; };
+		51DEE3171FB9933E0097DA99 /* FXStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DEE3161FB9933E0097DA99 /* FXStatusFrame.m */; };
 		51E908D61F9DE49D006E0F1A /* FXOauthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E908D51F9DE49D006E0F1A /* FXOauthViewController.m */; };
 		51F76F0D1F79FD7100C669A4 /* FXDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76F0C1F79FD7100C669A4 /* FXDropdownView.m */; };
 /* End PBXBuildFile section */
@@ -232,6 +234,10 @@
 		51AE32FC1F677A7F00D7CCA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51CF49E91F790A250042F082 /* FXSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXSearchBar.h; sourceTree = "<group>"; };
 		51CF49EA1F790A250042F082 /* FXSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXSearchBar.m; sourceTree = "<group>"; };
+		51DEE3121FB97FBB0097DA99 /* FXTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXTableViewCell.h; sourceTree = "<group>"; };
+		51DEE3131FB97FBB0097DA99 /* FXTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXTableViewCell.m; sourceTree = "<group>"; };
+		51DEE3151FB9933E0097DA99 /* FXStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXStatusFrame.h; sourceTree = "<group>"; };
+		51DEE3161FB9933E0097DA99 /* FXStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXStatusFrame.m; sourceTree = "<group>"; };
 		51E908D41F9DE49D006E0F1A /* FXOauthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXOauthViewController.h; sourceTree = "<group>"; };
 		51E908D51F9DE49D006E0F1A /* FXOauthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXOauthViewController.m; sourceTree = "<group>"; };
 		51F76F0B1F79FD7100C669A4 /* FXDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDropdownView.h; sourceTree = "<group>"; };
@@ -371,6 +377,8 @@
 				5189DA3A1FB1583A003C1525 /* FXLoadFooter.h */,
 				5189DA3B1FB1583A003C1525 /* FXLoadFooter.m */,
 				5189DA3D1FB15861003C1525 /* FXLoadFooter.xib */,
+				51DEE3121FB97FBB0097DA99 /* FXTableViewCell.h */,
+				51DEE3131FB97FBB0097DA99 /* FXTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -547,6 +555,8 @@
 				51769CC81FA7F8E800522A88 /* FXStatus.m */,
 				51769CCA1FA8064800522A88 /* FXUser.h */,
 				51769CCB1FA8064800522A88 /* FXUser.m */,
+				51DEE3151FB9933E0097DA99 /* FXStatusFrame.h */,
+				51DEE3161FB9933E0097DA99 /* FXStatusFrame.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -929,6 +939,7 @@
 				517C70481FB6E8DC00D5DE25 /* MJMember.m in Sources */,
 				51769CF61FA811C400522A88 /* SDWebImageManager.m in Sources */,
 				510A33D91F709E7F00E57EF7 /* main.m in Sources */,
+				51DEE3141FB97FBB0097DA99 /* FXTableViewCell.m in Sources */,
 				5189DA3C1FB1583A003C1525 /* FXLoadFooter.m in Sources */,
 				515933ED1FA55F01002DCB52 /* MBProgressHUD+MJ.m in Sources */,
 				51E908D61F9DE49D006E0F1A /* FXOauthViewController.m in Sources */,
@@ -975,6 +986,7 @@
 				517C70471FB6E8DC00D5DE25 /* MJIvar.m in Sources */,
 				517C70491FB6E8DC00D5DE25 /* MJMethod.m in Sources */,
 				510537D91FA404BB00011890 /* AFHTTPRequestOperationManager.m in Sources */,
+				51DEE3171FB9933E0097DA99 /* FXStatusFrame.m in Sources */,
 				517C70271FB6E7A900D5DE25 /* FXAdViewController.m in Sources */,
 				515933F21FA563FE002DCB52 /* FXAccount.m in Sources */,
 				510537DC1FA404BB00011890 /* AFSecurityPolicy.m in Sources */,
