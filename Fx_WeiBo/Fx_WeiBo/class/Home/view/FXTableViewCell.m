@@ -7,7 +7,7 @@
 //
 
 #import "FXTableViewCell.h"
-
+#import "FXStatusFrame.h"
 @implementation FXTableViewCell
 
 
@@ -65,21 +65,16 @@
     return self;
 }
 
-
 //重写frame 的set方法 给每个控件设置frame
 -(void)setStatusframe:(FXStatusFrame *)statusframe
 {
+
     _statusframe=statusframe;
-}
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.height = _statusframe.cellHeight;
+    _icon.frame=statusframe.iconF;
+    _nameLabel.frame=statusframe.nameLabelF;
+    _nameLabel.backgroundColor=[UIColor redColor];
+    
 }
 
 @end

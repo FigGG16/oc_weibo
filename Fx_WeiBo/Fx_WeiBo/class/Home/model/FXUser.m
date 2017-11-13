@@ -20,7 +20,6 @@
     user.idstr=dict[@"idstr"];
     
     return user;
-
 }
 
 

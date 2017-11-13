@@ -43,32 +43,9 @@
     
     //让主线程分出一点时间处理定时器
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //    scrollView == self.tableView == self.view
-    // 如果tableView还没有数据，就直接返回
-    if (self.tableView.tableFooterView.isHidden == NO)
-    {
-               return;
-    }
-
-    CGFloat offsetY = scrollView.contentOffset.y;
-    
-    // 当最后一个cell完全显示在眼前时，contentOffset的y值
-    CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    NSLog(@"%lf",judgeOffsetY);
-    if (offsetY >= judgeOffsetY) { // 最后一个cell完全进入视野范围内
-        // 显示footer
-        self.tableView.tableFooterView.hidden = NO;
-        
-        // 加载更多的微博数据
-        [self loadMoreStatus];
-    }
-}
 
 -(void)setUpFooter
 {
@@ -78,94 +55,6 @@
 }
 //上拉拉刷新的监听方法
 #warning 未实现
--(void)loadMoreStatus
-{
-    //https://api.weibo.com/2/statuses/home_timeline.json
-    
-    //创建一个账号模型
-    FXAccount *account=[FXAccountTool account];
-    
-    //创建一个管理对象
-    AFHTTPRequestOperationManager *man=[AFHTTPRequestOperationManager manager];
-    //从模型中取出请求信息
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    
-    //存到字典
-    params[@"access_token"]=account.access_token;
-    //    params[@"count"]=@1;
-    
-    //加载最新微博(解决重复包含)
-    FXStatus *last   = [self.statusesFrame lastObject];
-    
-    if(last!=nil)
-    {
-        params[@"since_id"]=last.idstr;
-    }
-    
-    
-    //发送get请求
-    [man GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-
-        
-        
-        
-        //第三方框架快速转模型
-        NSArray *newStatus= [FXStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-        
-        
-        
-        //将微博模型转化为frame模型
-        NSMutableArray *frames=[NSMutableArray array];
-        for(FXStatus *status in newStatus){
-        
-         //frame模型
-            FXStatusFrame *f=[[FXStatusFrame alloc] init];
-            
-            //把微博模型转化为frame模型
-            f.status = status;
-            
-            [frames addObject:f];
-        }
-        self.statusesFrame=frames;
-        
-        
-        
-        
-        
-        //根据数组内容的个数，获取范围
-        NSRange range=NSMakeRange(0, newStatus.count);
-        
-        // 设置位置
-        NSIndexSet *set= [NSIndexSet indexSetWithIndexesInRange:range];
-        
-        
-        
-        
-        
-        //在前方插入
-//        [self.status insertObjects:newStatus atIndexes:set];
-        [self.statusesFrame addObject:newStatus];
-    
-        [self setUpNewStatusCount:newStatus.count];
-        
-    
-        //更新cell数据
-        [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"请求失败");
-    }
-     
-     ];
-    
-    
-
-
-
-
-}
 
 
 -(void)setUnreadCount
@@ -241,7 +130,6 @@
     AFHTTPRequestOperationManager *man=[AFHTTPRequestOperationManager manager];
     //从模型中取出请求信息
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
     
     //存到字典
     params[@"access_token"]=account.access_token;
@@ -509,14 +397,15 @@
 #pragma mark -设置行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+        NSLog(@"self.statusesFrame.count = %lu",self.statusesFrame.count);
     return self.statusesFrame.count;
+
 }
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     #warning 未完
-    FXStatusFrame *frame =[[FXStatusFrame alloc] init];
+    FXStatusFrame *frame =self.statusesFrame[indexPath.row];
+    NSLog(@"每行的高==%lf",frame.cellHeight);
     return frame.cellHeight;
 }
 
@@ -549,6 +438,7 @@
     cell.statusframe=self.statusesFrame[indexPath.row];
     
     return cell;
+    
 }
 
 -(void)friendSearch
