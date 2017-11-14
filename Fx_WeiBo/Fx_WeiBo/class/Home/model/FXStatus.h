@@ -18,6 +18,8 @@
 //微博user属性
 @property(nonatomic,strong)FXUser *user;
 
+//微博的创建时间create_at
+@property(nonatomic,copy)NSString *created_at;
 
 +(instancetype)statusWithDict:(NSDictionary *)dict;
 

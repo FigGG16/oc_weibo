@@ -20,6 +20,8 @@
 
 @property(nonatomic,copy)NSString *profile_image_url;
 
+@property(nonatomic,copy)NSString *source;
+
 +(instancetype)userWithDict:(NSDictionary *)dict;
 
 @end
